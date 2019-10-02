@@ -1,0 +1,23 @@
+<div class="jumbotron container">
+    <h5 *ngIf="this.ps.productos.length==0">No hay productos</h5>
+    <table class="table table-sm" *ngIf="this.ps.productos.length>0">
+        <thead>
+            <th>#ID</th>
+            <th>Desc</th>
+            <th>Pu</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody *ngFor="let p of this.ps.productos; index as i">
+            <tr>
+                <td>{{p.id}}</td>
+                <td>{{p.descripcion}}</td>
+                <td>{{p.pu}}</td>
+                <td>
+                    <button type="button" class="btn btn-warning" (click)="editar(i)">Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="eliminar(i)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

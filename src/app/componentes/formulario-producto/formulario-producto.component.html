@@ -1,0 +1,10 @@
+<div class="container mt-4">
+    <form #f="ngForm" class="form-group">
+        <label>Descripcion:</label>
+        <input type="text" name="descripcion" class="form-control" ngModel required>
+        <label>Pu:</label>
+        <input type="number" step="0.1" class="form-control" name="pu" ngModel required>
+        <button (click)="crear(f)">Crear</button>
+
+    </form>
+</div>

@@ -1,0 +1,87 @@
+<div class="container jumbotron mt-4">
+    <input type="number" name="cantidad">
+    <button (click)="add(); cant()">Habilitar</button>
+</div>
+<div class="container jumbotron">
+    <div *ngFor="let mesa of this.ms.mesas">
+        <div class="card mt-4" style="width: 18rem;">
+            <div class="card-header">
+                <strong>MESA #{{mesa.nro}}</strong>
+
+                <span class="badge badge-secondary" *ngIf="!mesa.estado">Cerrado</span> <span class="badge badge-secondary" *ngIf="mesa.estado">Abierto</span>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Integrantes: {{mesa.integrantes}} </li>
+                <li class="list-group-item">Mozo: {{mesa.mozo}} </li>
+                <li class="list-group-item">
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
+                      Ticket
+                      </button>
+
+                    <div *ngIf="mesa.estado!=false" class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalScrollableTitle">Ticket MESA #{{mesa.nro}}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                                </div>
+                                <div class="modal-body">
+                                    Mozo: {{mesa.mozo}}
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Descripcion</th>
+                                                <th scope="col">PU</th>
+                                                <th scope="col">Cant.</th>
+                                                <th scope="col">Sub</th>
+                                                <th scope="col">Accion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">coca</th>
+                                                <td>125.8</td>
+                                                <td>2</td>
+                                                <td></td>
+                                                <td><button type="button" class="btn btn-warning">Editar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">asado</th>
+                                                <td>825.8</td>
+                                                <td>3</td>
+                                                <td></td>
+                                                <td><button type="button" class="btn btn-warning">Editar</button></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">flan</th>
+                                                <td>325.8</td>
+                                                <td>2</td>
+                                                <td></td>
+                                                <td><button type="button" class="btn btn-warning">Editar</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Minimizar</button>
+                                    <button type="button" class="btn btn-primary">Agregar</button>
+                                    <button type="button" class="btn btn-danger">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <button type="button" class="btn btn-success" (click)="mesa.estado=!mesa.estado" *ngIf="!mesa.estado">Habilitar</button>
+                    <button type="button" class="btn btn-danger" (click)="mesa.estado=!mesa.estado" *ngIf="mesa.estado">Cerrar</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
